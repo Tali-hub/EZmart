@@ -6,4 +6,4 @@ def index(request):
 
 
 
-    return render(request, 'register.html')
+    return render(request, 'index.html')
