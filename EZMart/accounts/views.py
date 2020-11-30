@@ -81,8 +81,16 @@ def Login(request):
             return redirect('login')
 
 
-
-
     else:
         return render(request,'Login.html')
 
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+def Cart(request):
+    return render(request,'Cart.html')
+
+def Payment(request):
+    return render(request,'Payment.html')
