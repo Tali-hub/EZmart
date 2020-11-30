@@ -21,13 +21,19 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Login</h4>              
               <br>
-                <form>
+              <div>
+                    {% for message in messages %}
+                    <p style="color:red">{{message}} </p>
+                    {% endfor %}
+                </div>
+                <form action="login" method="post">
+                    {% csrf_token %}
                  <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Email address" type="email">
+                    <input name="username" class="form-control" placeholder="Username" type="username">
                 </div> <!-- form-group// -->
                  <!-- form-group// -->
                 <div class="form-group input-group">
@@ -38,13 +44,13 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Password" type="password">
+                    <input name="password" class="form-control" placeholder="Password" type="password">
                 </div> <!-- form-group// -->
                <!-- form-group// -->                                      
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block"> Log in  </button>
                 </div> <!-- form-group// -->      
-                <p class="text-center">Don't have an account? <a href="register1" class="register1-link">Create Account</a> </p>                                                                 
+                <p class="text-center">Don't have an account? <a href="register" class="register-link">Create Account</a> </p>                                                                 
             </form>
             </article>
             </div> <!-- card.// -->

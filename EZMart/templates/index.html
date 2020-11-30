@@ -62,12 +62,29 @@
               </button>
             </from>
             <div class="user_option_box">
+              {% if user.is_authenticated %}
+              <a href="accounts/logout" class="account-link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>
+                  Logout
+                  <li>Hello, {{user.first_name}} </li>
+                </span>
+              </a>
+              {% else %}
               <a href="accounts/login" class="account-link">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>
                   Login 
                 </span>
               </a>
+              <a href="accounts/register" class="register-link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>
+                  Register 
+                </span>
+              </a>
+               {% endif %}
+
               <a href="accounts/cart" class="cart-link">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 <span>
@@ -723,7 +740,7 @@
             <h5>
               <a href="" class="navbar-brand">
                 <span>
-                  Minics
+                  EZMart
                 </span>
               </a>
             </h5>
@@ -738,6 +755,14 @@
             <p>
               <i class="fa fa-envelope" aria-hidden="true"></i>
               demo@gmail.com
+            </p>
+            <p>
+              <a href="admin" class="login-link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>
+                  Admin
+                </span>
+              </a>
             </p>
           </div>
         </div>
