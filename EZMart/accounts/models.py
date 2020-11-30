@@ -44,7 +44,7 @@ class MyAccManager(BaseUserManager):
         user.is_superuser = True 
         user.save(using=self._db)
         return user
-    def create_busines_user(self,email,first_name,last_name,address,phone,username,businessNum,businessType,store_ID,is_business=True,password=None,):
+    def create_business_user(self,email,first_name,last_name,address,phone,username,businessNum,businessType,store_ID,is_business=True,password=None,):
         user = self.create_user(
             email=self.normalize_email(email),
             username = username,
@@ -58,6 +58,9 @@ class MyAccManager(BaseUserManager):
             store_ID=store_ID,
             is_business=True,
         )
+        user.is_business=True
+        user.businessType=businessType
+        user.businessNum=businessNum
         user.save(using=self._db)
         return user
 
