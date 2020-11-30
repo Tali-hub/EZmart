@@ -93,6 +93,7 @@ class Account(AbstractBaseUser):
     objects = MyAccManager()
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']
+
     def __str__(self):
         return self.username
     def has_perm(self,perm,obj=None):
