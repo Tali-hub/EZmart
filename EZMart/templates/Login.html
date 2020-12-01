@@ -1,5 +1,6 @@
-<html>
-    <head>
+{% extends 'base.html' %}
+{% block head%}
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
@@ -9,8 +10,8 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
-    <body>
+{% endblock%}
+ {% block content%}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
@@ -18,7 +19,7 @@
         <br>  
         
         <div class="card bg-light">
-        <article class="card-body mx-auto" style="max-width: 400px;">
+        <article class="card-body mx-auto" style="max-width: 800px;">
                 <h4 class="card-title mt-3 text-center">Login</h4>              
               <br>
               <div>
@@ -60,7 +61,4 @@
         </article>
 
        
-        
-        
-    </body>
-</html>
+{% endblock%}
