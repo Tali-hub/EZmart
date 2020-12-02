@@ -156,3 +156,7 @@ def registerbusiness(request):
 
 
     return render(request, 'registerbusiness.html') 
+
+
+def userProfile(request):
+    return render(request,'userProfile.html')
