@@ -23,7 +23,9 @@
                 <p class="text-center">Get started with your free account</p>
                 <div>
                     {% for message in messages %}
-                    <p style="color:red">{{message}} </p>
+                    <div class="alert alert-danger" role="alert">
+                                {{message}}
+                    </div>
                     {% endfor %}
                 </div>
                 <form action="registercustomer" method="post">

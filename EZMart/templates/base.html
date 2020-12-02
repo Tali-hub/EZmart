@@ -30,6 +30,7 @@
   <link href="{% static 'css/style.css' %}" rel="stylesheet" />
   <!-- responsive style -->
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet"  />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   {% block head %}
   {% endblock %}
 </head>
@@ -75,21 +76,32 @@
               <a href="{% url 'login' %}" class="account-link">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>
-                  Login 
+                  Login   
                 </span>
               </a>
-              <a href="{% url 'registercustomer' %}" class="register-link">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                   <p>
+                    <a class="btn btn-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      <i class="fa fa-user-plus" aria-hidden="true">  Register</i>
+                    </a>
+                  </p>
+                  <div class="collapse" id="collapseExample" >
+                    <div class="card card-body" style="background-color:gray">
+                      <a href="{% url 'registercustomer' %}" class="register-link">
+                  <i class="fa fa-user-plus" aria-hidden="true"></i>
                 <span>
-                  R-Customer
+                  Customer
                 </span>
               </a>
               <a href="{% url 'registerbusiness' %}" class="register-link">
-                <i class="fa fa-user" aria-hidden="true"></i>
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
                 <span>
                   R-Business
                 </span>
               </a>
+                    </div>
+                  </div>
+              
+              
                {% endif %}
 
               <a href="{% url 'cart' %}" class="cart-link">
@@ -148,9 +160,10 @@
         <div class="col-md-3">
           <div class="info_contact">
             <h5>
-              <a href="" class="navbar-brand">
+              <a href="admin" class="register-link">
+                <i class="fa fa-user-secret" aria-hidden="true"></i>
                 <span>
-                  Minics
+                  Staff only
                 </span>
               </a>
             </h5>
@@ -247,12 +260,14 @@
 
 
 
-  <!-- jQery -->
+  {% comment %} <!-- jQery -->
   <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <!-- bootstrap js -->
   <script src="{% static 'js/bootstrap.js'%}"></script>
   <!-- custom js -->
-  <script src="{% static 'js/custom.js' %}"></script>
-
+  <script src="{% static 'js/custom.js' %}"></script> {% endcomment %}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     </body>
