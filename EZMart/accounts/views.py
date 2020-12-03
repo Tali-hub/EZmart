@@ -6,7 +6,6 @@ from .models import Account
 
 def registercustomer(request):
     if request.method == 'POST' :
-
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
@@ -158,5 +157,42 @@ def registerbusiness(request):
     return render(request, 'registerbusiness.html') 
 
 
-def userProfile(request):
-    return render(request,'userProfile.html')
+def userProfile(request):    
+    #TO-DO - pull username from existing account 
+    if request.method == 'POST' :    
+        
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        phone = request.POST['phone']
+        username = request.GET['username']
+        email = request.POST['email']
+        address = request.POST['address']
+        password = request.POST['password']
+        password2 = request.POST['password2']        
+        if len(phone)<8 :
+            messages.info(request,'Phone number to short')
+            return redirect('userProfile')
+        if len(password)<6 :
+            messages.info(request,'Password to short, should be atleast 6 symbols')
+            return redirect('userProfile')    
+        if password==password2:           
+            if Account.objects.filter(email=email).exists():
+                messages.info(request,'Email already exists')
+                return redirect('userProfile')
+            else:    
+                user = Account.objects.create_user(
+                    username=username,
+                    email=email, 
+                    first_name=first_name,
+                    last_name=last_name,
+                    address=address,
+                    phone=phone,
+                    password=password2
+                )
+                user.save()
+                return redirect('login')
+        else:
+            messages.info(request,'Passwords do not match')
+            return redirect('userProfile')
+    else:
+        return render(request, 'userProfile.html')
