@@ -115,14 +115,15 @@ class Account(AbstractBaseUser):
 class Store(models.Model):
     store_name               = models.CharField( max_length=150,unique=True)   
     date_joined              = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
-    last_login               = models.DateTimeField(verbose_name='last login', auto_now=True)
     store_address            = models.CharField(max_length=150, default='')
     store_status             = models.CharField(max_length=2,choices = STORE_STATUSES, default='AC')
-    businessNum              = models.CharField(max_length=14, default='')
-    category                 = models.CharField(max_length=3,choices = CATEGORY_CHOICES, default='')
+    businessNum              = models.IntegerField(max_length=14, unique=True )
+    store_phone              = models.IntegerField(max_length=14, unique=True )
+    category                 = models.CharField(max_length=3,choices = CATEGORY_CHOICES)
     store_ranking            = models.IntegerField(max_length=1, default=0)
     seller                   = models.ForeignKey(Account,  on_delete=models.CASCADE)
     products                 = models.ManyToManyField(Product, on_delete=models.CASCADE)
+    store_socials            = models.ManyToManyField(Social, on_delete=models.CASCADE)  # Store Links to twitter / facebook etc
     def __str__(self):
         return self.store_name
 
