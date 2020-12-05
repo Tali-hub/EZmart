@@ -17,7 +17,13 @@ ACCOUNT_TYPES = (
         ('C', 'Customer'),
     )
 
+STORE_STATUSES = (
+    ('C', 'Confirmed'),
+    ('AC', 'Awaiting confirmation'),
+    ('DC','Declined confimation'),
+    ('B','Banned'),
 
+)
 
 class MyAccManager(BaseUserManager):
     def create_user(self,username,email,first_name,last_name,address,phone,password=None):
@@ -111,11 +117,9 @@ class Store(models.Model):
     date_joined              = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login               = models.DateTimeField(verbose_name='last login', auto_now=True)
     store_address            = models.CharField(max_length=150, default='')
-    is_superuser             = models.BooleanField(default=False)
-    is_active                = models.BooleanField(default=False)
-    is_banned                = models.BooleanField(default=False)
+    store_status             = models.CharField(max_length=2,choices = STORE_STATUSES, default='AC')
     businessNum              = models.CharField(max_length=14, default='')
-    category                 = models.CharField(max_length=30,choices = CATEGORY_CHOICES, default='')
+    category                 = models.CharField(max_length=3,choices = CATEGORY_CHOICES, default='')
     store_ranking            = models.IntegerField(max_length=1, default=0)
     seller                   = models.ForeignKey(Account,  on_delete=models.CASCADE)
     products                 = models.ManyToManyField(Product, on_delete=models.CASCADE)
