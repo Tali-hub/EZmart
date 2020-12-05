@@ -103,6 +103,7 @@ class Account(AbstractBaseUser):
     def has_module_perms(self,app_label):
         return True
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
 
 
@@ -204,5 +205,7 @@ class Product(models.Model):
     #         'slug': self.slug
     #     })
 """
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
