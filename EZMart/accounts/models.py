@@ -1,15 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.core.validators import RegexValidator
+import Shop
 
-CATEGORY_CHOICES = (
-    ('E', 'Electronics'),
-    ('FS', 'Food Stuff'),
-    ('T', 'Tools')
-)
+
 USERNAME_REGEX = '^[a-zA-Z0-9.+-]*$'
 STORE_NAME_REGEX = '^[A-Za-z0-9!@#$%^&* ]*$'
 
+<<<<<<< Updated upstream
+=======
+
+ACCOUNT_TYPES = (
+        ('A', 'Admin'),
+        ('B', 'Business'),
+        ('C', 'Customer'),
+    )
+
+
+>>>>>>> Stashed changes
 class MyAccManager(BaseUserManager):
     def create_user(self,username,email,first_name,last_name,address,phone,password=None):
         if not email:
@@ -94,6 +102,7 @@ class Account(AbstractBaseUser):
         return self.is_admin
     def has_module_perms(self,app_label):
         return True
+<<<<<<< Updated upstream
     
 
 
@@ -195,3 +204,5 @@ class Product(models.Model):
     #         'slug': self.slug
     #     })
 """
+=======
+>>>>>>> Stashed changes
