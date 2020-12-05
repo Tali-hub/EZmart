@@ -100,12 +100,12 @@ def registerbusiness(request):
         phone = request.POST['phone']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        businesstype = request.POST['businesstype']
-        businessnum = request.POST['businessnum']
+        #businesstype = request.POST['businesstype']
+        #businessnum = request.POST['businessnum']
 
-        if len(businessnum)<6:
-            messages.info(request,'Business number to short')
-            return redirect('registerbusiness')  
+        # if len(businessnum)<6:
+        #     messages.info(request,'Business number to short')
+        #     return redirect('registerbusiness')  
         if len(first_name)<2:
             messages.info(request,'First name to short')
             return redirect('registerbusiness')
@@ -140,8 +140,7 @@ def registerbusiness(request):
                 phone=phone,
                 username=username,
                 password=password1,
-                businessNum=businessnum,
-                businessType=businesstype
+                #businessType=businesstype
             )
                 user.save()
                 return redirect('login')
