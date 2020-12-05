@@ -104,6 +104,7 @@ class Account(AbstractBaseUser):
         return True
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
 
 
@@ -205,6 +206,8 @@ class Product(models.Model):
     #         'slug': self.slug
     #     })
 """
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
