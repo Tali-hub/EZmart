@@ -292,3 +292,6 @@ def businessProfile(request):
             return redirect('businessProfile')
     else:
         return render(request, 'businessProfile.html')
+
+
+        #######

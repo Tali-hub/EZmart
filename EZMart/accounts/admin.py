@@ -14,7 +14,6 @@ class UsersAdmin(admin.ModelAdmin):
         'phone',
         'address'
         )
-    fields = ('id','username','acc_type','is_active','is_admin',)
     list_filter = ('data_joined','is_active','acc_type')
     search_fields = ['username','first_name','last_name']
     ordering = ('username','data_joined','acc_type')
