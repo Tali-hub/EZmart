@@ -74,21 +74,18 @@
                         <li>Hello, {{user.first_name}} </li>
                       </span>
                     </a>
-                      {% if user.acc_type != 'B' %}
                       <a href="{% url 'userProfile' %}" class="account-link">
                       <i class="fa fa-user" aria-hidden="true"></i>
                       <span>
                         Profile
                       </span>
-                    </a>   
-                    {% else %}                
+                    </a>                   
                           <a href="{% url 'businessProfile' %}" class="account-link">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <span>
                               ProfileB
                             </span>
                           </a>
-                    {% endif %}
 
               {% else %}
                     <a href="{% url 'login' %}" class="account-link">
