@@ -2,10 +2,18 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import auth
 from django.contrib import messages
 from .models import Account
+from Shop.models import Store
+from django.contrib.auth.decorators import login_required
+
+
+
+
 
 
 def registercustomer(request):
-    if request.method == 'POST' :
+    if(request.user.is_authenticated):
+        return redirect('/')
+    if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
@@ -63,6 +71,8 @@ def registercustomer(request):
     return render(request, 'registercustomer.html') 
         
 def Login(request):
+    if(request.user.is_authenticated):
+        return redirect('/')
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -79,7 +89,7 @@ def Login(request):
     else:
         return render(request,'Login.html')
 
-
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect('/')
@@ -91,6 +101,8 @@ def Payment(request):
     return render(request,'Payment.html')
 
 def registerbusiness(request):
+    if(request.user.is_authenticated):
+        return redirect('/')
     if request.method == 'POST' :
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -100,8 +112,8 @@ def registerbusiness(request):
         phone = request.POST['phone']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        businesstype = request.POST['businesstype']
         businessnum = request.POST['businessnum']
+
         if len(businessnum)<6:
             messages.info(request,'Business number to short')
             return redirect('registerbusiness')  
@@ -131,6 +143,9 @@ def registerbusiness(request):
                 messages.info(request,'Email already exists')
                 return redirect('registerbusiness')
             else:
+                store1 = Store(
+                    businessNum = int(businessnum)
+                )
                 user = Account.objects.create_business_user(
                 email=email, 
                 first_name=first_name,
@@ -139,9 +154,9 @@ def registerbusiness(request):
                 phone=phone,
                 username=username,
                 password=password1,
-                businessNum=businessnum,
-                businessType=businesstype
-            )
+            )   
+                store1.save()
+                user.store = store1
                 user.save()
                 return redirect('login')
         else:
@@ -155,105 +170,119 @@ def registerbusiness(request):
 
     return render(request, 'registerbusiness.html') 
 
-
-def userProfile(request):
+@login_required(login_url='login')
+def userProfile(request):     
     #TO-DO - pull username from existing account 
-    if request.method == 'POST' :         
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        phone = request.POST['phone']
-        email = request.POST['email']
-        address = request.POST['address']
-        password = request.POST['password']
-        password2 = request.POST['password2']        
-        if len(phone)<8 :
-            messages.info(request,'Phone number to short')
-            return redirect('userProfile')
-        if len(password)<6 :
-            messages.info(request,'Password to short, should be atleast 6 symbols')
-            return redirect('userProfile')    
-        if password==password2:           
-            if Account.objects.filter(email=email).exists():
-                messages.info(request,'Email already exists')
-                return redirect('userProfile')
-            else:
-                flag= False
-            if first_name is not None:
-                user.first_name = first_name
-                flag= True
-            if last_name is not None:
-                user.last_name = last_name
-                flag= True
-            if phone is not None:
-                user.phone = phone
-                flag= True
-            if email is not None:
-                user.email = email
-                flag= True
-            if address is not None:
-                user.address = address
-                flag= True
-            if password is not None:
-                user.password = password
-                flag= True   
-            if password2 is not None:
-                user.password2 = password2
-                flag= True                                                
-        else:
-            messages.info(request,'Passwords do not match')
-            return redirect('userProfile')
-    else:
-        return render(request, 'userProfile.html')
-
-
-def businessProfile(request):
     if request.method == 'POST' :
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
         address = request.POST['address']
         phone = request.POST['phone']
+        cur_password=request.POST['cur_password']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        businesstype = request.POST['businesstype']      
-        if len(phone)<8 :
-            messages.info(request,'Phone number to short')
-            return redirect('registerbusiness')
-        if len(password1)<6 :
-            messages.info(request,'Password to short, should be atleast 6 symbols')
-            return redirect('registerbusiness')    
-        if password1==password2:
-            if Account.objects.filter(email=email).exists():
-                messages.info(request,'Email already exists')
-                return redirect('businessProfile')
+        usered=request.user.username
+        u = Account.objects.get(username = usered)
+        if  u is not None: 
+            if password1==password2:
+                if Account.objects.filter(email=email).exists():
+                    messages.info(request,'Email already exists')
+                    return redirect('userProfile')
+                else:
+                    flag= False
+                if first_name != '':
+                    u.first_name = first_name
+                    flag= True
+                if last_name != '':
+                    u.last_name = last_name
+                    flag= True
+                if phone != '':
+                    u.phone = phone                    
+                    if len(phone)<8 :
+                        messages.info(request,'Phone number to short')
+                        return redirect('userProfile') 
+                    else:
+                        u.phone=phone
+                        flag= True                      
+                if email != '':
+                    u.email = email
+                    flag= True
+                if address != '':
+                    u.address = address
+                    flag= True           
+                if password1 != '':
+                    if len(password1)<6 :
+                        messages.info(request,'Password to short, should be atleast 6 symbols')                        
+                        return redirect('userProfile')
+                    else:
+                        flag= True
+                        u.set_password(password1)                        
+                if flag: 
+                    u.save()
+                return redirect('userProfile')
+
             else:
-                flag= False
-            if first_name is not None:
-                user.first_name = first_name
-                flag= True
-            if last_name is not None:
-                user.last_name = last_name
-                flag= True
-            if phone is not None:
-                user.phone = phone
-                flag= True
-            if email is not None:
-                user.email = email
-                flag= True
-            if address is not None:
-                user.address = address
-                flag= True
-            if password1 is not None:
-                user.password1 = password1
-                flag= True   
-            if password2 is not None:
-                user.password2 = password2
-                flag= True
-            if businesstype is not None:
-                user.businesstype = businesstype
-                flag= True
-        else:
-            messages.info(request,'Passwords do not match')
-            return redirect('businessProfile')
+                messages.info(request,'Passwords do not match')
+                return redirect('userProfile')
+    else:
+        return render(request, 'userProfile.html')
+
+
+@login_required(login_url='login')
+def businessProfile(request):       
+    if request.method == 'POST' :
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        email = request.POST['email']
+        address = request.POST['address']
+        phone = request.POST['phone']
+        cur_password=request.POST['cur_password']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        usered=request.user.username
+        u = Account.objects.get(username = usered)
+        if  u is not None and u.check_password(cur_password):# check return value from : u.check_password(cur_password)
+            if password1==password2:
+                if Account.objects.filter(email=email).exists():
+                    messages.info(request,'Email already exists')
+                    return redirect('businessProfile')
+                else:
+                    flag= False
+                if first_name != '':
+                    u.first_name = first_name
+                    flag= True
+                if last_name != '':
+                    u.last_name = last_name
+                    flag= True
+                if phone != '':
+                    u.phone = phone                    
+                    if len(phone)<8 :
+                        messages.info(request,'Phone number to short')
+                        return redirect('businessProfile') 
+                    else:
+                        u.phone=phone
+                        flag= True                      
+                if email != '':
+                    u.email = email
+                    flag= True
+                if address != '':
+                    u.address = address
+                    flag= True           
+                if password1 != '':
+                    if len(password1)<6 :
+                        messages.info(request,'Password to short, should be atleast 6 symbols')
+                        
+                        return redirect('businessProfile')
+                    else:
+                        flag= True
+                        u.set_password(password1)                        
+                if flag: 
+                    u.save()
+                return redirect('businessProfile')
+
+            else:
+                messages.info(request,'Passwords do not match')
+                return redirect('businessProfile')
     else:
         return render(request, 'businessProfile.html')
