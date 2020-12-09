@@ -1,11 +1,19 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import Store
+from django.http import HttpResponse,Http404
+from Shop.models import Store
 
 def StoreHomePage(request):  
     return render(request, 'StoreHomePage.html')
 
-
+def get_store_by_name(request,name):
+        try:
+                store=Store.objects.get(name=name)
+        except store.DoesNotExist:
+                raise Http404(f'Store {name} does not exicts')
+        # return HttpResponse(f'{store.name} and {store.businessNum}')
+        return render(request,'StoreHomePage.html',{'store':store})
 # def add_store(acc, businum):
 #         new_store = Store(
 #                 store_name= "",

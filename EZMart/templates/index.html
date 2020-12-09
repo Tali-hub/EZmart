@@ -14,14 +14,15 @@
                 <div class="col-md-6">
                   <div class="detail-box">
                     <h1>
-                      Welcome to our shop
+                      <!-- Welcome to our shop -->
+                      Stores:
                     </h1>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                      {% for store in stores %}
+                      <a href="http://127.0.0.1:8000/StoreHomePage/name/{{store.name}}" style="background-color: None;">{{store}}</a>
+                        <br>
+                      {% endfor %} 
                     </p>
-                    <a href="">
-                      Read More
-                    </a>
                   </div>
                 </div>
                 <div class="col-md-6">
