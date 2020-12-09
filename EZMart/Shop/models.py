@@ -32,7 +32,7 @@ class Store(models.Model):
      phone              = models.IntegerField(default=0)
      category           = models.CharField(max_length=3,choices = CATEGORY_CHOICES)
      ranking            = models.IntegerField(default=0)
-     logo_img           =models.ImageField(null=True,blank=True,upload_to="images/")
+     logo_img           =models.ImageField(null=True,blank=True,upload_to="static/images/")
      facebook_url       =models.CharField(max_length=255,null=True,blank=True)
      instagram_url      =models.CharField(max_length=255,null=True,blank=True)
      twitter_url        =models.CharField(max_length=255,null=True,blank=True)

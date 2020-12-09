@@ -5,7 +5,7 @@ from Shop.models import Store
 
 
 class ShopAdmin(admin.ModelAdmin):
-    list_display = ('name','businessNum','status','category','date_joined','phone','address')
+    list_display = ('id','name','businessNum','status','category','date_joined','phone','address')
     list_filter = ('status','date_joined','category')
     search_fields = ['name']
     ordering = ('status','date_joined','name')

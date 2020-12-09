@@ -233,6 +233,9 @@ def userProfile(request):
         return render(request, 'userProfile.html')
 
 
+def inventory(request):
+    return render(request,'inventory.html')
+
 @login_required(login_url='login')
 def businessProfile(request):
     user=request.user.username 

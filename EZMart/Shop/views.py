@@ -3,19 +3,27 @@ from django.contrib import messages
 from .models import Store
 from products.models import Product
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse,Http404
 
 def StoreHomePage(request):  
     return render(request, 'StoreHomePage.html')
 
 
 
-def get_prods(self):
+def get_store_by_name(request,name):
+        try:
+                store=Store.objects.get(name=name)
+        except store.DoesNotExist:
+                raise Http404(f'Store {name} does not exicts')
+        # return HttpResponse(f'{store.name} and {store.businessNum}')
+        return render(request,'StoreHomePage.html',{'store':store})
+def get_prods(self):# helper queryset func
         return Product.objects.filter(store=self)  # make a QuerySet out of the products DB (Matching class Product) wherein the 'store' attribute is equal to this objects (self)
         # the filter used is 'filter' rather than get, as 'get' only supports a single entity be returned, whereas 'filter' returns an "array" (QuerySet)
 
 ######################### STORE API #################################
 
-def show_prods(self):
+def show_prods(self): 
         print(get_prods(self))
 
 def add_prod(self): 
