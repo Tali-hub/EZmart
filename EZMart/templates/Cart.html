@@ -8,6 +8,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 {% endblock%}
 {% block content%}
     <br><br>
@@ -65,8 +66,8 @@
                                     <input type="text" class="form-control input-sm" value="1">
                                 </div>
                                 <div class="col-xs-2">
-                                    <button type="button" class="btn btn-link btn-xs">
-                                        <span class="glyphicon glyphicon-trash"> </span>
+                                    <button type="button" class="btn btn-link btn-xs" style="size:3rem">
+                                        <span class="glyphicon glyphicon-trash" > </span>
                                     </button>
                                 </div>
                             </div>
@@ -77,8 +78,8 @@
                                 <div class="col-xs-9">
                                     <h6 class="text-right">Added items?</h6>
                                 </div>
-                                <div class="col-xs-3">
-                                    <button type="button" class="btn btn-default btn-sm btn-block">
+                                <div class="col-xs-3" >
+                                    <button type="button" class="btn btn-default btn-sm btn-block" style="width:6rem;color:black;background-color:red">
                                         Update cart
                                     </button>
                                 </div>
@@ -87,11 +88,11 @@
                     </div>
                     <div class="panel-footer">
                         <div class="row text-center">
-                            <div class="col-xs-9">
-                                <h4 class="text-right">Total <strong>$50.00</strong></h4>
+                            <div class="col-xs-9" >
+                                <h4 class="text-right" style="font-size:2rem">Total: <strong>$50.00</strong></h4>
                             </div>
                             <div class="col-xs-3">
-                                <a href="payment" class="payment-link">
+                                <a href="payment" class="payment-link" >
                                 <button type="button" class="btn btn-success btn-block">
                                     Checkout
                                 </button>

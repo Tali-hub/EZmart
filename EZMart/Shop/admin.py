@@ -9,7 +9,7 @@ class ShopAdmin(admin.ModelAdmin):
     list_filter = ('status','date_joined','category')
     search_fields = ['name']
     ordering = ('status','date_joined','name')
-    fields = ('id','name','businessNum','status',)
+    fields = ('id','name','businessNum','status','facebook_url',"logo_img")
     filter_horizontal = ()
     readonly_fields = (
         'id',

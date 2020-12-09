@@ -31,18 +31,18 @@ class Product(models.Model):
     active = models.BooleanField(default= True)
     time_stamp= models.DateTimeField(verbose_name="Time Stamp",auto_now=True)
     quantity = models.IntegerField(default=0)
+
     objects = ProductManager()
+
     def __str__(self):
         return self.title
+
     # slug = models.SlugField()
     # image = models.ImageField()
 
-class Regulation(models.Model):
-    regulation = models.TextField()
-    last_changed = models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return 'EZMart Regulation ' + str(self.last_changed)
 
-    
+
+
+
 
    

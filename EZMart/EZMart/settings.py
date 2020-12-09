@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #My apps
     'accounts',
-    'Shop.apps.ShopConfig',
+    'Shop',
     'products',
     'orders',
     

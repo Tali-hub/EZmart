@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 
 
 
+
+
+
 def registercustomer(request):
     if(request.user.is_authenticated):
         return redirect('/')
@@ -292,6 +295,3 @@ def businessProfile(request):
             return redirect('businessProfile')
     else:
         return render(request, 'businessProfile.html')
-
-
-        #######
