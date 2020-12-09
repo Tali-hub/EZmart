@@ -33,6 +33,7 @@ class Store(models.Model):
      category           = models.CharField(max_length=3,choices = CATEGORY_CHOICES)
      ranking            = models.IntegerField(default=0)
     #store_socials            = models.ManyToManyField(Social, on_delete=models.CASCADE)  # Store Links to twitter / facebook etc
-
-     object= StoreManager()
-
+     objects = StoreManager()
+     def __str__(self):
+        return self.name
+   

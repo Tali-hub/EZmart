@@ -7,9 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 
 
-
-
-
 def registercustomer(request):
     if(request.user.is_authenticated):
         return redirect('/')
@@ -172,7 +169,10 @@ def registerbusiness(request):
 
 @login_required(login_url='login')
 def userProfile(request):     
-    #TO-DO - pull username from existing account 
+    user=request.user.username 
+    u = Account.objects.get(username = user)   
+    if u.acc_type == 'B':
+       return redirect('businessProfile') 
     if request.method == 'POST' :
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -182,9 +182,7 @@ def userProfile(request):
         cur_password=request.POST['cur_password']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        usered=request.user.username
-        u = Account.objects.get(username = usered)
-        if  u is not None: 
+        if  u is not None and u.check_password(cur_password): 
             if password1==password2:
                 if Account.objects.filter(email=email).exists():
                     messages.info(request,'Email already exists')
@@ -225,12 +223,19 @@ def userProfile(request):
             else:
                 messages.info(request,'Passwords do not match')
                 return redirect('userProfile')
+        else:
+            messages.info(request,'Current Password do not match')
+            return redirect('userProfile')
     else:
         return render(request, 'userProfile.html')
 
 
 @login_required(login_url='login')
-def businessProfile(request):       
+def businessProfile(request):
+    user=request.user.username 
+    u = Account.objects.get(username = user)   
+    if u.acc_type != 'B':
+       return redirect('userProfile')
     if request.method == 'POST' :
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -240,9 +245,7 @@ def businessProfile(request):
         cur_password=request.POST['cur_password']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        usered=request.user.username
-        u = Account.objects.get(username = usered)
-        if  u is not None and u.check_password(cur_password):# check return value from : u.check_password(cur_password)
+        if  u is not None and u.check_password(cur_password):
             if password1==password2:
                 if Account.objects.filter(email=email).exists():
                     messages.info(request,'Email already exists')
@@ -284,5 +287,11 @@ def businessProfile(request):
             else:
                 messages.info(request,'Passwords do not match')
                 return redirect('businessProfile')
+        else:
+            messages.info(request,'Current Password do not match')
+            return redirect('businessProfile')
     else:
         return render(request, 'businessProfile.html')
+
+
+        #######
