@@ -6,6 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse,Http404
 from accounts.models import Account
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import login_required
 def StoreHomePage(request):  
     return render(request, 'StoreHomePage.html')
 
@@ -26,11 +27,11 @@ def get_prods(self):# helper queryset func
 
 def show_prods(self): 
         print(get_prods(self))
-
+@login_required(login_url='login')
 def add_prod(request):
         if request.method == 'POST':
                 user  = request.user.username 
-                user  = Account.objects.get(username = user) 
+                user  = Account.objects.get(username = user)
                 name  = request.POST.get('name')
                 price = float(request.POST.get('price'))
                 cat   = request.POST.get('category')
@@ -80,10 +81,11 @@ def update_prod(self): #update title / price / quantity
         except ObjectDoesNotExist:
                 print("Sorry, incorrect ID!")
 
-
+@login_required(login_url='login')
 def inventory(request):       
-
-        
-
-    return render(request,'inventory.html')
+        user  = request.user.username 
+        user  = Account.objects.get(username = user)
+        if user.acc_type != 'B':
+                return redirect('/')
+        return render(request,'inventory.html')
 
