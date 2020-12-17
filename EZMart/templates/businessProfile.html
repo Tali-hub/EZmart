@@ -2,7 +2,7 @@
 {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> {% endcomment %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -40,7 +40,7 @@
                 <div class="list-group ">            
                 <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action">Media</a>
-                <a href="#" class="list-group-item list-group-item-action">Products</a>
+                <a href="{% url 'inventory' %}" class="list-group-item list-group-item-action">Inventory</a>
                 <a href="#" class="list-group-item list-group-item-action">Category</a>                
                 <a href="#" class="list-group-item list-group-item-action">Comments</a>                
                 <a href="#" class="list-group-item list-group-item-action">Reports</a>              

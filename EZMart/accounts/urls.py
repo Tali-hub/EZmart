@@ -10,5 +10,5 @@ urlpatterns = [
    path('registerbusiness',views.registerbusiness, name='registerbusiness'),
    path('userProfile',views.userProfile, name='userProfile'),
    path('businessProfile',views.businessProfile, name='businessProfile'),
-
+   
 ]

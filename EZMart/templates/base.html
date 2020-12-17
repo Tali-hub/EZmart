@@ -74,13 +74,13 @@
                         <li>Hello, {{user.first_name}} </li>
                       </span>
                     </a>
-                      {% if user.acc_type != 'B' %}
+                    {% if user.acc_type != 'B' %}
                       <a href="{% url 'userProfile' %}" class="account-link">
                       <i class="fa fa-user" aria-hidden="true"></i>
                       <span>
                         Profile
                       </span>
-                    </a>   
+                    </a>                   
                     {% else %}                
                           <a href="{% url 'businessProfile' %}" class="account-link">
                             <i class="fa fa-user" aria-hidden="true"></i>
@@ -158,7 +158,7 @@
                   <a class="nav-link" href="">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="">Why Us</a>
+                  <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="testimonial.html">Testimonial</a>

@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% comment %} <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> {% endcomment %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% comment %} ------------------------------------container scripts,css--------------------------------------------------------- {% endcomment %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% endblock %}
+{% block content%}
+ <br><br><br><br><br><br> 
+
+<div class="container" >
+
+    <div class="alert alert-info">
+        <a id="fullscreen" href="#fullscreen" class="alert-link"><strong>Click here</strong></a> to view this snippet in an iframe.
+        <i class="fa fa-info-circle fa-2x pull-right"></i>
+    </div>
+           
+    <h1> <i class="fa fa-inventory"></i> Products <small> - click on product for details</small></h1>
+    <table class="table table-hover">
+      <thead>
+        <tr class="row-category">
+          <th>#ID</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="row-prod">
+          <td>1</td>
+          <td>product name</td>
+          <td>35</td>  
+          <td>2800</td>
+        </tr>
+       
+         
+      </tbody>
+    </table>  
+               
+    
+    <div class="col-sm-12 ">      
+     
+        <div class="modal-footer">       
+        <div>
+            <button class="btn-prod-add" id="prod-add">
+                Add Product
+            </button>
+        </div>      
+
+        <ul class="pagination ">
+          <li><a href="#">«</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>      
+          <li><a href="#">»</a></li>
+         
+        </ul>    
+       
+        
+    </div>
+    
+   
+        
+</div>
+{% comment %} <i class="text-muted fa fa-shopping-cart"></i> {% endcomment %}
+<!-- Modal -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        
+            <link rel="stylesheet" type="text/css" href="{% static 'css/inventory.css' %}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel"> <strong>Name of Product </strong> </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+            </div>
+                <div class="modal-body">                  
+                    <table class="pull-left col-md-8 ">
+                            <tbody>
+                            <tr>
+                                <td class="h6"><strong>ID</strong></td>                               
+                                <td class="h5">{{product.id}} </td>
+                                </tr>
+                            <tr>
+                                <td class="h6"><strong>Product Name</strong></td>
+                                <td> <input id="name" class="input_product" name="name" type="text" > </td>
+                                <td class="h5">{{product.title}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="h6"><strong>Price</strong></td>
+                                    <td> <input id="price" class="input_product" name="price" type="number" > </td>
+                                    <td class="h5">2800 <strong>$</strong></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="h6"><strong>Category</strong></td>
+                                    <td>
+                                    <select name="Category" class="input_product">
+                                        <option selected="Category"></option>
+                                        <option>WorkTools</option>
+                                        <option>Super Market</option>
+                                        <option>Electronics</option>
+                                    </select> 
+                                </td>
+                                    <td class="h5">Electronics</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="h6"><strong>Quantity</strong></td>
+                                    <td><input id="quantity" class="input_product" name="quantity" type="number" > </td>
+                                    <td class="h5">35</td>
+                                </tr>                             
+                            
+                            <tr>
+                                    <td class="btn-mais-info text-primary">
+                                        <i class="open_info fa fa-plus-square-o"></i>
+                                        <i class="open_info hide fa fa-minus-square-o"></i> Description
+                                    </td>
+                                    <td> </td>
+                                    <td class="h5"></td>
+                                </tr> 
+                                                    
+
+                            </tbody>
+                    </table>                             
+                         
+                    <div class="col-md-4"> 
+                        <img src="http://lorempixel.com/150/150/technics/" alt="teste" class="img-thumbnail">  
+                    </div>
+                    
+                    <div class="clearfix"></div><input id="description" placeholder=" "class="input_product_description" name="description"  type="text" >
+                        <p class="open_info hide">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    </div>
+                    
+                    <div class="modal-footer">       
+                        <div class="btn-prod-func">
+                        <button class="btn-prod-update">
+                            UPDATE
+                        </button>
+                        </div>
+                        <div>
+                        <button class="btn-prod-delete">
+                            DELETE
+                        </button>
+                        </div>                 
+                    </div>
+                </div>   
+        </div>
+</div>
+{% comment %} ----------------------------------------------------ADD Product HTML --------------------------------------------------------------------------- {% endcomment %}
+<div class="modal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <link rel="stylesheet" type="text/css" href="{% static 'css/inventory.css' %}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel"> <strong>Name of Product </strong> </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="text-danger fa fa-times"></i></button>
+                    </div>
+                <form action="add_prod" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                 <div class="modal-body">                  
+                    <table class="add-prod-teble ">
+                            <tbody>
+
+                                <td class="h6"><strong>Product Name</strong></td>
+                                <td> <input id="name" class="input_add_product" name="name" type="text" > </td>
+                                
+                                </tr>
+                                <tr>
+                                    <td class="h6"><strong>Price</strong></td>
+                                    <td> <input id="price" class="input_add_product" name="price" type="number" > </td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    <td class="h6"><strong>Category</strong></td>
+                                    <td>
+                                    <select name="category" id="category" class="input_add_product">
+                                        <option value="E">Electronics</option>
+                                        <option value="FS">Food Stuff</option>
+                                        <option value="T">Tools</option>
+                                    </select> 
+                                </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="h6"><strong>Quantity</strong></td>
+                                    <td><input id="quantity" class="input_add_product" name="quantity" type="number" > </td>
+                                    
+                                </tr>                             
+                            
+                             <tr>
+                                    <td class="h6"><strong>Description</strong></td>
+                                    
+                                    <td>
+                                    <div>
+                                            
+                                                <textarea id="desc" name="desc" rows="2" cols="25">
+                                                </textarea>
+                                            <br><br>
+                                         </div>                                  
+                                    </td>
+                                   
+                            </tr> 
+                            <tr>                                
+                                   <label for="myfile">Select a image:</label>
+                                    <input type="file" id="myfile" name="myfile" >>
+
+                            </tr>
+                                                    
+                 
+                        
+                            </tbody>
+                    </table>                           
+                          
+                    
+                </div>   
+                        <div class="modal-footer" >       
+                            <div class="btn-prod-func">
+                                <button type="submit" class="btn-prod-update">
+                                    ADD
+                                </button>
+                            </div>                   
+                     
+                       </div>    
+              </form>                    
+        </div>
+    </div>
+</div> 
+</div>
+
+
+<script>
+$(function () {
+        /* BOOTSNIPP FULLSCREEN FIX */
+    if (window.location == window.parent.location) {
+        $('#back-to-bootsnipp').removeClass('hide');
+        $('.alert').addClass('hide');
+    } 
+    
+    $('#fullscreen').on('click', function(event) {
+        event.preventDefault();
+        window.parent.location = "";
+    });
+
+        $('#prod-add').on('click', function(event) {
+        event.preventDefault();
+        $('#myModal1').modal('show');
+    });
+
+    $('.row-prod').on('click', function(event) {
+        event.preventDefault();
+        $('#myModal').modal('show');
+    })
+ 
+    
+    $('.btn-mais-info').on('click', function(event) {
+        $( '.open_info' ).toggleClass( "hide" );
+    })   
+     
+});
+</script>
+
+ 
+ <br><br><br><br><br><br> 
+{% endblock %}
