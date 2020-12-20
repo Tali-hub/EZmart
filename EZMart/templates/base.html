@@ -158,7 +158,7 @@
                   <a class="nav-link" href="">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="">Why Us</a>
+                  <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="testimonial.html">Testimonial</a>
@@ -178,7 +178,7 @@
         <div class="col-md-3">
           <div class="info_contact">
             <h5>
-              <a href="admin" class="register-link">
+              <a href="{% url 'admin:index'%}" class="register-link">
                 <i class="fa fa-user-secret" aria-hidden="true"></i>
                 <span>
                   Staff only

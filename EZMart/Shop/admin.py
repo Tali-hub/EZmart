@@ -15,11 +15,10 @@ class ShopAdmin(admin.ModelAdmin):
         'id',
         'date_joined',
         'phone',
-        'address',
-        'businessNum',
+        'address',        
         'ranking',
         'category',
-        'name', 
+        
     )
 
 
