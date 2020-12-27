@@ -3,15 +3,17 @@ from Shop.models import Store
 from django.core.files.base import ContentFile
 
 CATEGORY_CHOICES = (
-    ('E', 'Electronics'),
-    ('FS', 'Food Stuff'),
-    ('T', 'Tools')
+    ('Electronics', 'Electronics'),
+    ('Food Stuff', 'Food Stuff'),
+    ('Tools', 'Tools'),
+    ('Other','Other'),
 )
 
 
 
 
 class ProductManager(models.Manager):
+
     def __str__(self):
         return self.title
 
@@ -22,7 +24,7 @@ class ProductManager(models.Manager):
 class Product(models.Model):
     title        = models.CharField(max_length=100, default ='Product name here')
     price        = models.FloatField(default=0)
-    category     = models.CharField(choices=CATEGORY_CHOICES, max_length=2,blank= True)
+    category     = models.CharField(choices=CATEGORY_CHOICES, max_length=222,blank= True)
     store        = models.ForeignKey(Store, models.SET_NULL,blank= True, null= True)
     description  = models.CharField(max_length=500 , default ='Description name here')
     active       = models.BooleanField(default= True)
@@ -39,4 +41,10 @@ class Product(models.Model):
 
 
 
-   
+class Regulation(models.Model):
+    regulation = models.TextField()
+    last_changed = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return 'EZMart Regulation ' + str(self.last_changed)
+
+    
