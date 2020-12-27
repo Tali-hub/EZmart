@@ -28,18 +28,16 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    # My apps
+    #My apps
     'accounts',
     'Shop',
     'products',
     'orders',
     'Basic',
-
-
+    
 
 
     # django apps
@@ -67,7 +65,7 @@ ROOT_URLCONF = 'EZMart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,7 +88,7 @@ WSGI_APPLICATION = 'EZMart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3' ),
     }
 }
 
