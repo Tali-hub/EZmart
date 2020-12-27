@@ -26,7 +26,12 @@ SECRET_KEY = 'w03uw8+@3t89_(yvoh)riwjuikqh6gk!2$h4=(7&gj)yzerh*b'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'EZMartSCE@gmail.com' 
+EMAIL_HOST_PASSWORD = 'ezmart123456' 
 
 
 # Application definition

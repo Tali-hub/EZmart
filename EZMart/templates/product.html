@@ -40,11 +40,13 @@
                 
                     <img src="{{127.0.0.1}}/{{product.img}}" alt="" id="prod-main-show">
                         
-                    <button  class="add_cart_btn" onclick="cart_add_button({{cart}},{{product.id}})">                        
+                    <form action="{% url 'purchase' %}" method="POST"><button  class="add_cart_btn" name="buy-id-btn" value="{{product.id}}"> 
+                     {% csrf_token %}                     
                           <span>
-                            Add To Cart
+                            Buy
                           </span>                        
                     </button>
+                    </form>
                 </div>
                     <div class="detail-box" id="prod_title">
                         <h5 class="name">
@@ -92,7 +94,13 @@
                 <h4 class="price">current Quantity: <span>{{product.quantity}}</span></h4>              
                 
                   <div class="action">
-                  <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                  <form action="{% url 'purchase' %}" method="POST"><button  class="add-to-cart btn btn-default" name="buy-id-btn" value="{{product.id}}"> 
+                     {% csrf_token %}                     
+                          <span>
+                            Buy
+                          </span>                        
+                    </button>
+                    </form>
                   <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
                 </div>
               </div>

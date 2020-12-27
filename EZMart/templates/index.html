@@ -112,11 +112,6 @@
                 <div class="img-box">
                     <img src="{{127.0.0.1}}/{{product.img}}" alt="" id="prod-main-show">
                         
-                    <button  class="buy_btn">                        
-                          <span>
-                            Buy
-                          </span>                        
-                    </button>
                 </div>
                     <div class="detail-box" id="prod_title">
                         <h5>
@@ -130,7 +125,15 @@
                       </div>                     
                     </div>
           </div>
+          <form action="purchase" method="POST"><button  class="buy_btn" name="buy-id-btn" value="{{product.id}}"> 
+                     {% csrf_token %}                     
+                          <span>
+                            Buy
+                          </span>                        
+                    </button>
+                    </form>
         </div>
+        
          {% endfor %}
 
 

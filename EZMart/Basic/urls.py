@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 from . import views
 
 urlpatterns = [
@@ -7,4 +7,6 @@ urlpatterns = [
     path('about', views.aboutUs, name='about'),
     path('search', views.SearchProdView.as_view(), name='search'),
     path('purchase', views.purchase, name='purchase'),
+    path('checkout', views.checkout, name='checkout'),
+    
 ]

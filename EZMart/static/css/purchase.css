@@ -30,8 +30,7 @@ body {
 
 .book,
 .book-img {
-    width: 120px;
-    height: 180px;
+    height: 160px;
     border-radius: 5px
 }
 
@@ -139,7 +138,7 @@ button:focus {
 
     .book,
     .book-img {
-        width: 100px;
+        
         height: 150px
     }
 
