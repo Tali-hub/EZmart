@@ -1,135 +1,531 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block head %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-{% comment %} ------------------------------------container scripts,css--------------------------------------------------------- {% endcomment %}
-<!-- JQuery Core JavaScript -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    {% comment %} ------------------------------------container scripts,css--------------------------------------------------------- {% endcomment %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{% comment %} ------------------------------------container scripts,css--------------------------------------------------------- {% endcomment %}
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+{%load static%}
+<!DOCTYPE html>
+<html>
 
-{% endblock %}
-{% block content%}
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Minics</title>
 
 
- <section class="product_section layout_padding">
- <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static'css/bootstrap.css'%}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet"> <!-- range slider -->
+
+  <!-- font awesome style -->
+  <link href="{% static'css/font-awesome.min.css'%}" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="{% static'css/style.css'%}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static'css/responsive.css'%}" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="top_nav_container">
+            <div class="contact_nav">
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>
+                  Call : +01 123455678990
+                </span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>
+                  Email : demo@gmail.com
+                </span>
+              </a>
+            </div>
+            <from class="search_form">
+              <input type="text" class="form-control" placeholder="Search here...">
+              <button class="" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </button>
+            </from>
+            <div class="user_option_box">
+              <a href="" class="account-link">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>
+                  My Account
+                </span>
+              </a>
+              <a href="" class="cart-link">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span>
+                  Cart
+                </span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                Minics
+              </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html"> About</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="why.html">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="testimonial.html">Testimonial</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+
+  <!-- product section -->
+
+  <section class="product_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h1>
+        <h2>
           Our Products
-        </h1>
+        </h2>
       </div>
-       <button class="prod-details" id="details"><img id="detail-img-btn" src="https://img.icons8.com/ios/24/000000/info--v3.png"/><h3>Click to view</h3></button>
       <div class="row">
-
-       {% for product in products %}
         <div class="col-sm-6 col-lg-4">
           <div class="box">
-                <div class="img-box">
-                
-                    <img src="{{127.0.0.1}}/{{product.img}}" alt="" id="prod-main-show">
-                        
-                    <button  class="add_cart_btn" onclick="cart_add_button({{cart}},{{product.id}})">                        
-                          <span>
-                            Add To Cart
-                          </span>                        
-                    </button>
+            <div class="img-box">
+              <img src="images/p1.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-                    <div class="detail-box" id="prod_title">
-                        <h5 class="name">
-                          {{product.title}}
-                        </h5>
-                      <div class="product_info" id="prod_price">
-                          <h5 class="price">
-                            {{product.price}}<span>$</span>  
-                                                          
-                          </h5>  
-                                          
-                      </div>                     
-                    </div>
+              </div>
+            </div>
           </div>
         </div>
-         {% endfor %}
-      </div>     
-  </section>
-    {% comment %} ------------------------------------PRODUCT to VIEW--------------------------------------------------------- {% endcomment %}
-
-
-  <body>  
-  <section class="product_section layout_padding">
-      <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
-      <div class="modal" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      {% for product in products %}
-        <div class="card">
-          <div class="container-fliud">
-            <div class="wrapper row">
-              <div class="preview col-md-6">
-                
-                <div class="preview-pic tab-content">
-                  <div class="tab-pane active" id="pic-1"><img src="{{127.0.0.1}}/{{product.img}}" /></div>
-                  
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p2.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
-               
-                
               </div>
-              <div class="details col-md-6">
-                <h3 class="product-title">{{product.title}}</h3>
-                <div class="rating">
-              
-                <p class="product-description">{{product.description}}</p>
-                <h4 class="price">current price: <span>{{product.price}}$</span></h4>
-                <h4 class="price">current Quantity: <span>{{product.quantity}}</span></h4>              
-                
-                  <div class="action">
-                  <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-                  <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p3.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p4.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p5.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p6.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p7.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p8.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/p9.png" alt="">
+              <a href="" class="add_cart_btn">
+                <span>
+                  Add To Cart
+                </span>
+              </a>
+            </div>
+            <div class="detail-box">
+              <h5>
+                Product Name
+              </h5>
+              <div class="product_info">
+                <h5>
+                  <span>$</span> 300
+                </h5>
+                <div class="star_container">
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-        {% endfor %}
-    </section>
-  </body>
+      <div class="btn_box">
+        <a href="" class="view_more-link">
+          View More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end product section -->
 
 
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info_contact">
+            <h5>
+              <a href="" class="navbar-brand">
+                <span>
+                  Minics
+                </span>
+              </a>
+            </h5>
+            <p>
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              Address
+            </p>
+            <p>
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              +01 1234567890
+            </p>
+            <p>
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              demo@gmail.com
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_info">
+            <h5>
+              Information
+            </h5>
+            <p>
+              Eligendi sunt, provident, debitis nemo, facilis cupiditate velit libero dolorum aperiam enim nulla iste maxime corrupti ad illo libero minus.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_links">
+            <h5>
+              Useful Link
+            </h5>
+            <ul>
+              <li>
+                <a href="index.html">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="about.html">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="product.html">
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="why.html">
+                  Why Us
+                </a>
+              </li>
+              <li>
+                <a href="testimonial.html">
+                  Testimonial
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info_form ">
+            <h5>
+              Newsletter
+            </h5>
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button>
+                Subscribe
+              </button>
+            </form>
+            <div class="social_box">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="">
+                <i class="fa fa-youtube" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  {% comment %} <script>
-    function cart_add_button(cart, id) {
-      return cart.values().dict.get("add")(id, 1);
-    }
-  </script> {% endcomment %}
-  <script>
-  $(function () {
-          /* BOOTSNIPP FULLSCREEN FIX */
-      if (window.location == window.parent.location) {
-          $('#back-to-bootsnipp').removeClass('hide');
-          $('.alert').addClass('hide');
-      }    
+  <!-- end info_section -->
 
-      $('#details').on('click', function(event) { //add product
-          event.preventDefault();
-          $('#myModal1').modal('show');
-      });        
-   
-  });
- </script>
- 
 
-  <br><br><br>
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
 
-{% endblock%}
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
 
+
+</body>
+
+</html>
