@@ -25,18 +25,18 @@ def get_prods(self):# helper queryset func
 
 ######################### STORE API #################################
 
-def show_prods(self): 
-        print(get_prods(self))
+
 @login_required(login_url='login')
+
 def add_prod(request):
         if request.method == 'POST':
                 user  = request.user.username 
                 user  = Account.objects.get(username = user)
-                name  = request.POST.get('name')
-                price = float(request.POST.get('price'))
+                name  = request.POST.get('nameProd')
+                price = float(request.POST.get('priceProd'))
                 cat   = request.POST.get('category')
                 desc  = request.POST.get('desc')
-                quan  = int(request.POST.get('quantity'))
+                quan  = int(request.POST.get('quantityProd'))
                 pic   = request.FILES['myfile'] if 'myfile' in request.FILES else False
                 newP = Product(
                         title=name,
@@ -57,29 +57,52 @@ def add_prod(request):
                 return render(request,'inventory.html')
 
 
-def delete_prod(self):
-        title=input("Enter name of product to delete:\n(NOTE: To update, use 'update' instead)\n")
+def delete_prod(request):        
         try:
-                get_prods(self).get(title=title).delete()
+                if request.method == 'POST':
+                        id = int(request.POST.get('btn-prod-delete-click'))
+                        get_prods(request.user.store).get(id=id).delete()
+                        return redirect('inventory')
+                else:
+                       return redirect('inventory') 
         except ObjectDoesNotExist:
-                print("No object matching that ID was found!")
+                return redirect('inventory')
 
-def update_prod(self): #update title / price / quantity
-        title=input("Enter name of product to update:\n(NOTE: To delete entirely, use 'delete' instead)\n")
+def update_prod(request): #update title / price / quantity
+        
         try:
-                prod = get_prods(self).get(title=title)
-                string = input("Enter new title: (leave blank to not change)")
-                flt = input("Enter new price: (leave blank to not change)")
-                quan = input("Update quantity: (leave blank to not change)")
-                if(string is not ""):
-                        prod.title= string
-                if(flt is not "" and flt >= 0):
-                        prod.price= flt
-                if(quan is not "" and quan >= 0):
-                        prod.quantity= quan
-                prod.save()
+                if request.method == 'POST' :
+                        id = int(request.POST.get('btn-prod-update-click'))
+                        Product.objects.filter(id=id)
+                        title  = request.POST.get('prod-name')
+                        price = request.POST.get('prod-price')
+                        cat   = request.POST.get('category')
+                        desc  = request.POST.get('desc')
+                        quan  = request.POST.get('quan-prod')
+                        pic   = request.FILES['myfile'] if 'myfile' in request.FILES else False
+                        if(pic != False):
+                                fs = FileSystemStorage("static/images")
+                                fs.save(pic.name,pic)
+                                pic_url ="static/images" + fs.url(pic)
+                                Product.objects.filter(id=id).update(img=pic_url)
+                        if title != "":     
+                                Product.objects.filter(id=id).update(title=title)
+                        if price != "":
+                                Product.objects.filter(id=id).update(price=float(price))
+                        if desc != "":
+                                Product.objects.filter(id=id).update(description = desc)
+                        if quan != "":
+                                Product.objects.filter(id=id).update(quantity=int(quan))
+                        if cat is not None:
+                               Product.objects.filter(id=id).update(category=cat) 
+                        return redirect('inventory')
+                else:
+                        return redirect('inventory')
         except ObjectDoesNotExist:
-                print("Sorry, incorrect ID!")
+                print("oops, object doesn't exist!")
+                return redirect('inventory')
+
+
 
 @login_required(login_url='login')
 def inventory(request):       
@@ -87,5 +110,7 @@ def inventory(request):
         user  = Account.objects.get(username = user)
         if user.acc_type != 'B':
                 return redirect('/')
-        return render(request,'inventory.html')
+        allProducts = get_prods(request.user.store)
+        context= {'allProducts': allProducts}
 
+        return render(request,'inventory.html',context)
