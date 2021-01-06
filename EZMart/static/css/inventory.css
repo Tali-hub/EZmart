@@ -1,20 +1,23 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
+#container {
+  position: relative;
+  padding: 5rem 5rem;
+}
 tbody > tr {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.result{
-    margin-top:20px;
+.result {
+  margin-top: 20px;
 }
-.input_product{
+.input_product {
   width: 4.5rem;
 }
-.input_product_description{
+.input_product_description {
   width: 25rem;
   height: 6rem;
 }
-.btn-prod-delete{
+.btn-prod-delete {
   background-color: red;
   border: none;
   color: white;
@@ -24,8 +27,8 @@ tbody > tr {
   display: inline-block;
   font-size: 16px;
 }
-.btn-prod-update{
-  background-color: #4CAF50; /* Green */
+.btn-prod-update {
+  background-color: #4caf50; /* Green */
   border: none;
   color: white;
   padding: 15px 32px;
@@ -34,15 +37,15 @@ tbody > tr {
   display: inline-block;
   font-size: 16px;
 }
-.modal-footer{
-  padding: 10px;
+.modal-footer {
+  text-align: center;
+  padding: 0px;
   margin: auto;
-
 }
-.btn-prod-func{
+.btn-prod-func {
   text-align: center;
 }
-.btn-prod-add{
+.btn-prod-add {
   background-color: #4c74af; /* Green */
   border: none;
   color: white;
@@ -53,17 +56,25 @@ tbody > tr {
   font-size: 16px;
 }
 
-
-.h6{
+.h6 {
   font-size: 1.3rem;
 }
-.h5{
+.h5 {
   font-size: 1.3rem;
 }
-.input_add_product{
+.input_add_product {
   width: 15rem;
 }
-.add-prod-teble{
-  border-collapse:separate; 
-  border-spacing:2em;
+.add-prod-teble {
+  border-collapse: separate;
+  border-spacing: 2em;
+}
+
+/* #myTable {
+  margin: auto;
+  position: relative;
+} */
+.table table-hover {
+  position: relative;
+  float: left;
 }

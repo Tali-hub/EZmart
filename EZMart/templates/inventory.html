@@ -15,14 +15,9 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 {% endblock %}
 {% block content%}
- <br><br><br><br><br><br> 
+<br><br><br><br><br><br> 
 
-<div class="container">
-
-    <div class="alert alert-info">
-        <a id="fullscreen" href="#fullscreen" class="alert-link"><strong>Click here</strong></a> to view this snippet in an iframe.
-        <i class="fa fa-info-circle fa-2x pull-right"></i>
-    </div>
+<div class="container">    
            
     <h1> <i class="fa fa-inventory"></i> Products <small> 
     </small></h1>
@@ -43,11 +38,11 @@
       </thead>
       <tbody id="tbodyToModify">  
       {% for product in allProducts %}
-        <form form action="update_prod"  method="post" enctype="multipart/form-data">
+        <form  action="update_prod"  method="post" enctype="multipart/form-data">
                     {% csrf_token %}      
                 <tr class="row-prod" id="row_of_prod">
                 <td id="id_default">{{product.id}}</td>
-                <td id="col_title" ><input id="prod-name" name="prod-name" placeholder={{product.title}} type"text"></td>
+                <td id="col_title" ><input id="prod-name" name="prod-name" placeholder="{{product.title}}" type"text"></td>
                 <td id="col_cat">
                 <select name="category" id="category" class="input_add_product" >
                                         <option selected>{{product.category}}</option>
@@ -57,11 +52,11 @@
                                         <option value="Other">Other</option>
                                     </select> 
                 </td>
-                <td id="col_price"><input  id="prod-price" name="prod-price" placeholder={{product.price}} type="number" step="any">$</td>
-                <td id="col_quan"><input id="quan-prod" name="quan-prod" placeholder={{product.quantity}} type="number"></td> 
-                <td id="col_desc"><textarea id="desc" name="desc" rows="2" cols="25" placeholder={{product.description}}></textarea> 
+                <td id="col_price"><input  id="prod-price" name="prod-price" placeholder="{{product.price}}" type="number" step="any">$</td>
+                <td id="col_quan"><input id="quan-prod" name="quan-prod" placeholder="{{product.quantity}}" type="number" min="0"></td> 
+                <td id="col_desc"><textarea id="desc" name="desc" rows="2" cols="25" placeholder="{{product.description}}"></textarea> 
                 <td id="col_img">
-                    <input type="file" id="myfile" name="myfile" class="open_info hide">
+                    <input type="file" id="myfile" name="myfile" class="open_info hide" accept="image/*">
                     <p class="open_info hide" id="img"> <img src="{{127.0.0.1}}/{{product.img}}" alt="teste" width="75"></p>                
                 </td>                                                                             
                 
@@ -77,8 +72,7 @@
                             onclick="return confirm('Do you really want to delete this product?');">
                                 DELETE
                             </button> 
-                            </form>    
-                            
+                            </form>          
           </td> 
         </tr>      
          {% endfor %}
@@ -132,7 +126,7 @@
                                 </tr>
                                 <tr>
                                     <td class="h6"><strong>Price</strong></td>
-                                    <td> <input id="priceProd" class="input_add_product" name="priceProd" type="number" step="any" required> </td>
+                                    <td> <input id="priceProd" class="input_add_product" name="priceProd" type="number" min=0 step="any" required> </td>
                                     
                                 </tr>
                                 
@@ -150,7 +144,7 @@
                                 
                                 <tr>
                                     <td class="h6"><strong>Quantity</strong></td>
-                                    <td><input id="quantityProd" class="input_add_product" name="quantityProd" type="number" required> </td>
+                                    <td><input id="quantityProd" class="input_add_product" name="quantityProd" type="number" min="0" required > </td>
                                     
                                 </tr>                             
                             
@@ -169,7 +163,7 @@
                             </tr> 
                             <tr>                                
                                    <label for="myfile">Select a image:</label>
-                                    <input type="file" id="myfile" name="myfile" >
+                                    <input type="file" id="myfile" name="myfile" accept="image/*">
 
                             </tr>
                                                     

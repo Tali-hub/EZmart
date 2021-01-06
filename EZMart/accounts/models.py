@@ -5,7 +5,6 @@ from Shop.models import Store
 
 
 USERNAME_REGEX = '^[a-zA-Z0-9.+-]*$'
-STORE_NAME_REGEX = '^[A-Za-z0-9!@#$%^&* ]*$'
 
 
 ACCOUNT_TYPES = (

@@ -1,6 +1,9 @@
 from django import forms 
 from .models import Product 
-from Shop.models import Store 
+from Shop.models import Store
+
+
+
 class ProdForm(forms.Form):
     class Meta:
         model = Product

@@ -10,13 +10,10 @@ CATEGORY_CHOICES = (
 )
 
 
-
-
 class ProductManager(models.Manager):
+
     def __str__(self):
         return self.title
-
-
 
 
 
@@ -35,9 +32,3 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
-
-
-
-
-
-   

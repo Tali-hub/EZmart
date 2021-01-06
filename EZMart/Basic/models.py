@@ -1,10 +1,13 @@
 from django.db import models
-from  accounts.models import Account
-# Create your models here.
+from accounts.models import Account
+
+
 FORM_STATUS = (
     ('O', 'Open'),
     ('C', 'Closed'),
 )
+
+
 class Form(models.Model):
     name     = models.CharField(max_length=30, default='')
     email         = models.EmailField(max_length=254)

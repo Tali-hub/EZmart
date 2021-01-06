@@ -1,279 +1,166 @@
-{%load static%}
-<!DOCTYPE html>
-<html>
-
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <link rel="icon" href="images/fevicon.png" type="image/gif" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-
-  <title>Minics</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block head%}
 
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="{% static'css/bootstrap.css'%}" />
+{% endblock%} 
+{% block content%}
+  
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
+<link  href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"  rel="stylesheet"  id="bootstrap-css"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet"> <!-- range slider -->
+<div class="container">
+  <div class="row">
+    <!-- Blog Post Content Column -->
+    <div class="col-lg-8"  >
+      <hr />
 
-  <!-- font awesome style -->
-  <link href="{% static'css/font-awesome.min.css'%}" rel="stylesheet" />
-
-  <!-- Custom styles for this template -->
-  <link href="{% static'css/style.css'%}" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="{% static'css/responsive.css'%}" rel="stylesheet" />
-
-</head>
-
-<body class="sub_page">
-
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="header_top">
-        <div class="container-fluid">
-          <div class="top_nav_container">
-            <div class="contact_nav">
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call : +01 123455678990
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  Email : demo@gmail.com
-                </span>
-              </a>
-            </div>
-            <from class="search_form">
-              <input type="text" class="form-control" placeholder="Search here...">
-              <button class="" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </from>
-            <div class="user_option_box">
-              <a href="" class="account-link">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span>
-                  My Account
-                </span>
-              </a>
-              <a href="" class="cart-link">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                <span>
-                  Cart
-                </span>
-              </a>
-            </div>
-          </div>
-
-        </div>
+      <div class="well bgcolor-skyblue">
+        <h1 style="text-align:center">About Us</h1>
+        
       </div>
-      <div class="header_bottom">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
-              <span>
-                Minics
-              </span>
-            </a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class=""> </span>
-            </button>
+      <hr />
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ">
-                <li class="nav-item ">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="about.html"> About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="product.html">Products</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="why.html">Why Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="testimonial.html">Testimonial</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
+      <!-- Preview Image -->
+      <img        class="img-responsive"        src="http://mobilebusinessinsights.com/wp-content/uploads/2016/03/IBM_MobileFirst_SXSWBlog_0321_v2.jpg"alt="" >
 
-  <!-- about section -->
+      <hr />
 
-  <section class="about_section">
-    <div class="container-fluid  ">
-      <div class="row">
-        <div class="col-md-5 ml-auto">
-          <div class="detail-box pr-md-3">
-            <div class="heading_container">
-              <h2>
-                We Provide Best For You
-              </h2>
-            </div>
-            <p>
-              Totam architecto rem beatae veniam, cum officiis adipisci soluta perspiciatis ipsa, expedita maiores quae accusantium. Animi veniam aperiam, necessitatibus mollitia ipsum id optio ipsa odio ab facilis sit labore officia!
-              Repellat expedita, deserunt eum soluta rem culpa. Aut, necessitatibus cumque. Voluptas consequuntur vitae aperiam animi sint earum, ex unde cupiditate, molestias dolore quos quas possimus eveniet facilis magnam? Vero, dicta.
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 px-0">
-          <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end about section -->
-
-  <!-- info section -->
-  <section class="info_section ">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="info_contact">
-            <h5>
-              <a href="" class="navbar-brand">
-                <span>
-                  Minics
-                </span>
-              </a>
-            </h5>
-            <p>
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              Address
-            </p>
-            <p>
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              +01 1234567890
-            </p>
-            <p>
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              demo@gmail.com
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="info_info">
-            <h5>
-              Information
-            </h5>
-            <p>
-              Eligendi sunt, provident, debitis nemo, facilis cupiditate velit libero dolorum aperiam enim nulla iste maxime corrupti ad illo libero minus.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="info_links">
-            <h5>
-              Useful Link
-            </h5>
-            <ul>
-              <li>
-                <a href="index.html">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="about.html">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="product.html">
-                  Products
-                </a>
-              </li>
-              <li>
-                <a href="why.html">
-                  Why Us
-                </a>
-              </li>
-              <li>
-                <a href="testimonial.html">
-                  Testimonial
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="info_form ">
-            <h5>
-              Newsletter
-            </h5>
-            <form action="">
-              <input type="email" placeholder="Enter your email">
-              <button>
-                Subscribe
-              </button>
-            </form>
-            <div class="social_box">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-youtube" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end info_section -->
-
-
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
+      <!-- Post Content -->
+      <p class="lead">
+        We are a group of 4 students in our 2nd year in software engineering,from Sami Shamoon College of Engineering,that worked under the supervision and guidance of D"r Chasidim Hadas and Cochavi Hadar to create this project.
+        
       </p>
+      <p>
+        From March 2020 the corona virus struck the country of israel and since then a lot of small businesses were hurt economically and still are,due to the lockdowns and fear from the virus.
+
+      </p>
+      <p>
+        Our project goal is helping this small businesses to get througth the corona virus pandemic by opening their own digital store for free and by hellping to connect them and customers in a safer way,without the need to fear the virus.
+
+      </p>
+      <p class="lead">
+        We believe that every store owner should get help during these hard times,no matter is race, sex,gender, religion and nationality.
+      </p>
+<!--       <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor
+        quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem
+        voluptates cupiditate voluptas illo saepe quaerat numquam recusandae?
+        Qui, necessitatibus, est!
+      </p>  -->
+
+      <hr />
     </div>
-  </footer>
-  <!-- footer section -->
 
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
+    <!-- Blog Sidebar Widgets Column -->
+    
 
+      <!-- Blog Categories Well -->
+      
+        <!-- /.row -->
+      </div>
 
-</body>
+      <!-- Side Widget Well -->
+      <div class="well bgcolor-skyblue">
+        <h1 style="text-align:center">Our Crew</h1>
+        <p style="text-align:center">
+          Second year students, for a bachelor's degree in software engineering, at Sami Shimon College
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %}
+------------------------------------------------------------------------------------------------------------------
+{% endcomment %}
+<link
+  href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Poppins:200,300,400,500,500i,600,700,800&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
-</html>
+<div class="team-area">
+  <div class="team-warp">
+    <div class="team-one">
+      <div class="container-fluid">
+        <div class="row tp-padding">
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="team-style-one team-style-block">
+              <div class="img-box">
+                <img id="personal" src="{% static 'images/ron.jpg' %}" alt="t1" />
+                <div class="img-overlay"></div>
+                <div class="social">
+                  <a target="_blank" href="https://www.linkedin.com/in/ron-vayner-607814198" ><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+                  <a target="_blank" href=""<i class="fa fa-github fa-5" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="text-box">
+                <h3 class="name" >Ron Vayner</h3>
+                <span class="ttp">Founder & CEO</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="team-style-one team-style-block">
+              <div class="img-box">
+                <img id="personal1" src="{% static 'images/טל אוחנה.jpg' %}" alt="t2" />
+                <div class="img-overlay"></div>
+                <div class="social">
+                  <a target="_blank" href="https://www.facebook.com/tal.ohana.357/" class="fa fa-facebook"></a>
+                  <a target="_blank" href="https://github.com/talohana55"<i class="fa fa-github" aria-hidden="true"></i></a>
+                  <a target="_blank" href="https://www.linkedin.com/in/tal-ohana-a01abb1b4/" ><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+                </div>
+              </div>
+              <div class="text-box">
+                <h3 class="name" >Tal Ohana</h3>
+                <span>Front-End </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="team-style-one team-style-block">
+              <div class="img-box">
+                <img id="personal" src="{% static 'images/tali.jpg' %}" alt="t3" />
+                <div class="img-overlay"></div>
+                <div class="social">
+                  <a href="#" class="fa fa-twitter"></a>
+                  <a href="" class="fa fa-facebook"></a>
+                  <a href="#" class="fa fa-instagram"></a>
+                </div>
+              </div>
+              <div class="text-box">
+                <h3 class="name">Tali Tevlin</h3>
+                <span>Founder & CEO</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="team-style-one team-style-block">
+              <div class="img-box">
+                <img id="personal" src="{% static 'images/ivgeny.jpg' %}" alt="t2" />
+                <div class="img-overlay"></div>
+                <div class="social">
+                  <a target="_blank" href="https://github.com/eodinzov94"<i class="fa fa-github" aria-hidden="true"></i></a>
+                  <a target="_blank" href="https://www.linkedin.com/in/%D7%99%D7%91%D7%92%D7%A0%D7%99-%D7%90%D7%95%D7%93%D7%99%D7%A0%D7%A6%D7%95%D7%91-64a51a197/" ><i class="fa fa-linkedin-square" style="font-size:24px"></i></a>
+                </div>
+              </div>
+              <div class="text-box">
+                <h3 class="name">Evgeny Odinzov</h3>
+                <span>Back-End</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br><br><br><br>
+
+{% endblock %}
