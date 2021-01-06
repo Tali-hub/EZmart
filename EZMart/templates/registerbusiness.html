@@ -28,7 +28,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                <form action="registerbusiness" method="post">
+                <form action="registerbusiness" method="post" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }">
                 {% csrf_token %}
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -64,31 +64,14 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                     </div>
-                    <input name="phone" class="form-control" placeholder="Phone number*" type="phone">
-                </div> <!-- form-group// -->
-                <!-- <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                    </div>
-                    <input name="businesstype" class="form-control" placeholder="Buisness Type" type="text">
-                </div>  -->
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                    </div>
-                    <select name="businesstype" class="form-control">
-                        <option selected="businesstype"> Select Buisness type*</option>
-                        <option>WorkTools</option>
-                        <option>Super Market</option>
-                        <option>Electronics</option>
-                    </select>
-                </div>
+                    <input name="phone" class="form-control" placeholder="Phone number*" type="number">
+                </div> 
                   <div class="form-group input-group">
-                    <div class="input-group-prepend">
+                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-check-square"></i> </span>
                     </div>
-                    <input name="businessnum" class="form-control" placeholder="Buisness Number*" type="text">
-                </div> 
+                    <input name="businessnum" class="form-control" placeholder="Buisness Number*" type="number">
+                </div>  
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
@@ -106,6 +89,11 @@
                 </div> <!-- form-group// -->  
                   
                 <p class="text-center">Have an account? <a href="login">Log In</a> </p>    
+                
+                <input type="number" name="quant-t" id="quant-t" value="1" hidden>
+                <input type="checkbox" name="checkbox" value="check" id="agree" /> 
+                I have read and agree to the <a href="{% url 'regulations' %}">
+                 Conditions and Terms</a> and <a href="{% url 'privacy' %}">Privacy and Policy</a>
                                                                             
             </form>
             </article>
@@ -115,7 +103,17 @@
             <br><br>
         </article>
 
-       
-        
-        <script src="" async defer></script>
+        <script type="text/javascript" src="//www.termsfeed.com/public/i-agree-checkbox/releases/1.0.0/i-agree-checkbox.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+            i_agree_checkbox.run({"palette":"dark","terms_and_conditions_url":"","privacy_policy_url":"",
+            "privacy_policy_text_container_id":"#user_i_agree_checkbox_privacy_policy_text_container",
+            "terms_and_conditions_text_container_id":"#user_i_agree_checkbox_terms_and_conditions_text_container",
+            "warning_dialog_text":"Warning. You must accept our terms.","consent_to_agreements":["privacy_policy",
+            "terms_and_conditions"],"agreements_display_type":"full_text","checkbox_text_area_id":"#i_agree_checkbox_insertable_area",
+            "checkbox_text":"By clicking submit you agree to our %PrivacyPolicy% and %TermsAndConditions%.",
+            "submit_button_id":"#submit_button","agree_button_text":"OK","close_button_text":"Cancel"});
+            });
+        </script>
+        <noscript>I Agree Checkbox by <a href="https://www.TermsFeed.com/i-agree-checkbox/" rel="nofollow noopener">TermsFeed.com</a></noscript>     
 {% endblock %}

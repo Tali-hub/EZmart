@@ -1,8 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.core.validators import RegexValidator
+from Shop.models import Store
+
 
 USERNAME_REGEX = '^[a-zA-Z0-9.+-]*$'
+
+
+ACCOUNT_TYPES = (
+        ('A', 'Admin'),
+        ('B', 'Business'),
+        ('C', 'Customer'),
+    )
+
 
 class MyAccManager(BaseUserManager):
     def create_user(self,username,email,first_name,last_name,address,phone,password=None):
@@ -17,7 +27,7 @@ class MyAccManager(BaseUserManager):
             last_name=last_name,
             address=address,
             phone=phone
-        )
+        ) 
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -34,10 +44,11 @@ class MyAccManager(BaseUserManager):
         )
         user.is_admin = True
         user.is_staff = True
-        user.is_superuser = True 
+        user.is_superuser = True
+        user.acc_type = 'A' 
         user.save(using=self._db)
         return user
-    def create_business_user(self,email,first_name,last_name,address,phone,username,businessNum,businessType,password=None):
+    def create_business_user(self,email,first_name,last_name,address,phone,username,password=None):
         user = self.create_user(
             email=self.normalize_email(email),
             username = username,
@@ -45,12 +56,9 @@ class MyAccManager(BaseUserManager):
             last_name=last_name,
             address=address,
             phone=phone,
-            password = password
+            password = password,
         )
-        user.is_business=True
-        user.businessType=businessType
-        user.businessNum=businessNum
-        # Func in future to set up business ID
+        user.acc_type = 'B' 
         user.save(using=self._db)
         return user
 
@@ -75,10 +83,9 @@ class Account(AbstractBaseUser):
     last_name                = models.CharField(max_length=30, default='')
     address                  = models.CharField(max_length=150, default='')
     phone                    = models.CharField(max_length=14, default='')
-    businessNum              = models.CharField(max_length=14, default='')
-    businessType             = models.CharField(max_length=30, default='')
-    store_ID                 = models.IntegerField(default=-1)
-    is_business              = models.BooleanField(default=False)    
+    acc_type                 = models.CharField(max_length=2, choices = ACCOUNT_TYPES , default = 'C')  
+    store                    = models.OneToOneField(Store, null= True,blank = True, default= None, on_delete=models.CASCADE)
+
 
     objects = MyAccManager()
     USERNAME_FIELD = 'username'
@@ -90,4 +97,3 @@ class Account(AbstractBaseUser):
         return self.is_admin
     def has_module_perms(self,app_label):
         return True
-    

@@ -26,14 +26,27 @@ SECRET_KEY = 'w03uw8+@3t89_(yvoh)riwjuikqh6gk!2$h4=(7&gj)yzerh*b'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+#gmail email send/settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'EZMartSCE@gmail.com' 
+EMAIL_HOST_PASSWORD = 'ezmart123456' 
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'default from email'
 
 # Application definition
 
 INSTALLED_APPS = [
-    #My apps
+    # My apps
     'accounts',
-    
+    'Shop',
+    'products',
+    'orders',
+    'Basic',
+
+
 
 
     # django apps
@@ -61,7 +74,7 @@ ROOT_URLCONF = 'EZMart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,7 +97,7 @@ WSGI_APPLICATION = 'EZMart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3' ),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -124,9 +137,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
